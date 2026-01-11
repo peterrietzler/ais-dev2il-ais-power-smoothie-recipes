@@ -1,11 +1,11 @@
-# 🥤 Tutorial: The AIS Survival Smoothie (Local Git Basics)
+# 🥤 The AIS Survival Smoothie
 
 In this tutorial, you will build a recipe for the "Ultimate AIS Survival Smoothie." 
 You will learn how to use Git as a system to track your progress and navigate history using commits.
 
-# Git Basics
+## Git Basics
 
-## 🛠 Tools You'll Need
+### 🛠 Tools You'll Need
 - **Terminal:** Command Prompt/PowerShell (Windows) or Terminal (Mac).
 - **Text Editor:**
    - **Windows:** Notepad. Make sure that you are using plain text format
@@ -13,7 +13,7 @@ You will learn how to use Git as a system to track your progress and navigate hi
    - **For the Brave:** `vi` or `vim`. Use this option only if you are comfortable with vi!
 
 
-## Step 1: Tell Git Who You Are (Global Config)
+### Step 1: Tell Git Who You Are (Global Config)
 Before we start, Git needs to know who is creating the commits. 
 In Git, there are **system** settings (everyone on the PC), 
 **global** settings (only for you), 
@@ -24,7 +24,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-## Step 2: Create the Recipe Book
+### Step 2: Create the Recipe Book
 Create a new folder for your project and tell Git to start watching it.
 
 ```bash
@@ -33,7 +33,7 @@ cd survival-smoothie
 git init
 ```
 
-**👻 Where is my repository (the "Vault") ?**
+**👻 Where is my repository (the "Vault")?**
 
 Git creates a hidden folder called `.git` to store your commits. To see the "invisible" magic, try this:
 
@@ -42,7 +42,7 @@ Git creates a hidden folder called `.git` to store your commits. To see the "inv
 
 ⚠️ Note: **Never** delete or fiddle around with the `.git` folder manually. If you delete it, your entire project history (your time machine) is gone!
 
-## Step 3: Create the Recipe 
+### Step 3: Create the Recipe
 
 1. Create a file named `README.md` and add your first ingredient: `1. 2x Bananas`.
 1. Go back to your terminal and check the status: `git status`.
@@ -57,7 +57,7 @@ git status
 
 📦 The file is now **staged**. It's ready for the commit.
 
-## Step 4: Your First Version of the Recipe
+### Step 4: Your First Version of the Recipe
 
 A commit is a permanent save-point of your work. The message is the most important part because it tells your future self what you did.
 
@@ -66,7 +66,7 @@ A commit is a permanent save-point of your work. The message is the most importa
 Do not use messages like these:
 - _update_
 - _fixed stuff_
-- 
+
 ✅ **The "Professional Way"**
 
 A good message is short and describes the __intent__.
@@ -83,7 +83,7 @@ v1 (HEAD) Add base ingredient: bananas
 
 A pointer that says _"You are here"_. It points to the specific commit you are currently looking at.
 
-## Step 5: Expand the Recipe
+### Step 5: Expand the Recipe
 
 Add `2. 1x Scoop Protein Powder` to your `README.md`.
 
@@ -109,7 +109,7 @@ v2 (HEAD) Add protein for brain power
 v1 Add base ingredient: bananas
 ```
 
-## Step 6: Quick History Check
+### Step 6: Quick History Check
 
 Use a one-line view to see your current progress.
 
@@ -121,7 +121,7 @@ You rarely need to use all 40 characters. In most commands, you can just use the
 7 characters. Git is smart enough to find the right commit as long as those 7 characters 
 are unique within your repository.
 
-## Step 7: Inspecting the History in More Detail
+### Step 7: Inspecting the History in More Detail
 
 Now, let’s look at the full record to see the **Who**, **When**, and **Why**.
 
@@ -131,7 +131,7 @@ If you also want to see the **What** use: `git log -p`.
 
 ⚠️ You might need to hit `q` to exit the log view.
 
-## Step 8: Compare Two Points in Time 
+### Step 8: Compare Two Points in Time
 
 Sometimes you want to see exactly what changed between the very first version and the latest version.
 
@@ -141,7 +141,7 @@ Find the hashes for two versions and compare them using
 git diff <hash-of-v1> <hash-of-v2>
 ```
 
-## Step 9: The "Oops Moment"
+### Step 9: The "Oops Moment"
 
 **Scenario A: The Protein was a mistake (Revert)**
 
@@ -168,7 +168,7 @@ git reset --hard <hash-of-v1>
 
 ⚠️ Warning: Newer commits are now gone! Be very careful with this command!
 
-## 🏆 Summary Cheat Sheet
+### 🏆 Summary Cheat Sheet
 
 | Command                | What it does                             | Metaphor                                        |
 |:-----------------------|:-----------------------------------------|:------------------------------------------------|
@@ -182,7 +182,7 @@ git reset --hard <hash-of-v1>
 | `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away |
 
 
-## 🚀 Level Up
+### 🚀 Level Up
 
 Finished early? Put your Git skills to the test with these "Pro" moves.
 
@@ -226,7 +226,7 @@ The goal is never to punish the person who made the mistake, but to fix the proc
 that allowed the mistake to happen. `git blame` is simply a map to find the person 
 who can help explain what happened here.
 
-# Making Your Life Easier in Day-to-Day _Gitting_
+## Making Your Life Easier in Day-to-Day _Gitting_
 
 Git is "CLI-first". You can do everything using the CLI, which makes it the perfect candidate for 
 automating tasks. This also means that you can use Git in any environment where a command line and 
@@ -241,7 +241,7 @@ increases UX. Just imagine having to analyze the output of `git diff` for many f
 - You will see something like this 
 ![changes.png](changes.png)
 
-## 🙈 Ignoring Unwanted Files (.gitignore)
+### 🙈 Ignoring Unwanted Files (.gitignore)
 
 When you open the project in PyCharm, it creates a hidden folder called `.idea`. This contains your 
 personal IDE settings. Accept for the moment that you don't want to share these with your team.
@@ -259,7 +259,7 @@ To stop Git from tracking these, use a `.gitignore` file.
    ```
 3. Commit the `.gitignore` file using the _Commit Tool_. Just follow your knowledge and intuition. 
 
-## Using Your IDE "to git"
+### Using Your IDE "to git"
 
 All IDEs usually have great support for Git! In PyCharm, you can, e.g. use the 
 _Commit Tool_ ![commit-tool-symbol.png](commit-tool-symbol.png) or the _Git_ Tool
@@ -278,7 +278,7 @@ You already know everything you need! Follow your intuition to complete the foll
 - If you can't find a tool use _View > Tool Windows_
 - If you are searching for an IDE action, try _Navigate > Search Everywhere > Actions_ 
 
-## 🚀 Level Up
+### 🚀 Level Up
 
 Finished early? Put your IDE skills to the test with these "Pro" moves.
 
@@ -290,4 +290,3 @@ Finished early? Put your IDE skills to the test with these "Pro" moves.
   - Put the cursor in the first line and find only the changes done to exactly this line
 - You've messed up something but have no commit? Check out the _Local History Tool_.
     ⚠️ Warning: This is not a Git feature.
-
