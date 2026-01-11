@@ -115,7 +115,7 @@ Use a one-line view to see your current progress.
 
 `git log --oneline`
 
-Each commit is identified by a unique commit hash, aka as a _Commit SHA_. It is a unique, 
+Each commit is identified by a unique commit hash, aka a _Commit SHA_. It is a unique, 
 40-character string that acts as a fingerprint for a specific snapshot of your project.
 You rarely need to use all 40 characters. In most commands, you can just use the first 
 7 characters. Git is smart enough to find the right commit as long as those 7 characters 
@@ -178,7 +178,7 @@ git reset --hard <hash-of-v1>
 | `git commit`           | Creates a commit                         | Put the box into the vault                      |
 | `git log`              | Shows commits                            | Show all the boxes in the vault                 | 
 | `git diff HASH1 HASH2` | Compares two commits                     | Show the difference of two boxes in the vault   |
-| `git revert`           | Undos changes                            | Duplicate a box and put it into the vault       |
+| `git revert`           | Undoes changes                           | Duplicate a box and put it into the vault       |
 | `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away |
 
 
@@ -210,7 +210,7 @@ Run git status again. Notice how one is staged and the other isn't!
 Your workspace is getting messy with "trash" files (like `test.txt`) that you never added to Git.
 
 - Create a trash file `junk.txt` in your workspace 
-- Check the status to varify that it's untracked
+- Check the status to verify that it's untracked
 - To delete all untracked files in one go, run `git clean -f` 
 
 ⚠️ Warning: Your files will be gone! Be very careful with this command!
