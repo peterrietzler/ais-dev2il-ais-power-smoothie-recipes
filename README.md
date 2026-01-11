@@ -9,7 +9,7 @@ You will learn how to use Git as a system to track your progress and navigate hi
 - **Terminal:** Command Prompt/PowerShell (Windows) or Terminal (Mac).
 - **Text Editor:**
    - **Windows:** Notepad. Make sure that you are using plain text format
-   - **Mac:** TextEdit. Make sure that you are using plain text format
+   - **Mac:** TextEdit. Make sure that you are using plain text format (_Format > Make Plain Text_)
    - **For the Brave:** `vi` or `vim`. Use this option only if you are comfortable with vi!
 
 
@@ -225,3 +225,69 @@ Git can tell you exactly who wrote which line in a file.
 The goal is never to punish the person who made the mistake, but to fix the process 
 that allowed the mistake to happen. `git blame` is simply a map to find the person 
 who can help explain what happened here.
+
+# Making Your Life Easier in Day-to-Day _Gitting_
+
+Git is "CLI-first". You can do everything using the CLI, which makes it the perfect candidate for 
+automating tasks. This also means that you can use Git in any environment where a command line and 
+the `git` tool is available. 
+
+In daily work, most developers use an IDE (Integrated Development Environment), which tremendously 
+increases UX. Just imagine having to analyze the output of `git diff` for many files and changes 😱.
+
+- Start PyCharm
+- Open the `survival-smoothie` folder as a project
+- Open the _Commit Tool_ ![commit-tool-symbol.png](commit-tool-symbol.png)
+- You will see something like this 
+![changes.png](changes.png)
+
+## 🙈 Ignoring Unwanted Files (.gitignore)
+
+When you open the project in PyCharm, it creates a hidden folder called `.idea`. This contains your 
+personal IDE settings. Accept for the moment that you don't want to share these with your team.
+
+**Rule of Thumb:**
+- **Commit:** Source code (recipes in our case), shared config.
+- **Do not commit:** IDE settings (`.idea`, `.vscode`), temporary files, build results and secrets.
+
+To stop Git from tracking these, use a `.gitignore` file.
+
+1. Create a file named `.gitignore` in your project root.
+2. Add the following line to it:
+   ```text
+   .idea
+   ```
+3. Commit the `.gitignore` file using the _Commit Tool_. Just follow your knowledge and intuition. 
+
+## Using Your IDE "to git"
+
+All IDEs usually have great support for Git! In PyCharm, you can, e.g. use the 
+_Commit Tool_ ![commit-tool-symbol.png](commit-tool-symbol.png) or the _Git_ Tool
+![git-tool-symbol.png](git-tool-symbol.png). Also the _Project Tool_ ![project-tool-symbol.png](project-tool-symbol.png)
+is going to augment your project with Git information. 
+
+You already know everything you need! Follow your intuition to complete the following tasks:
+- Create a new file, stage it and commit
+- Add a new ingredient to our smoothie recipe and commit it
+- Find and inspect the history of your commits (who, what, when, why) 
+- Compare two commits
+- Revert a commit
+- Reset your project to a previous state
+
+💡Hints
+- If you can't find a tool use _View > Tool Windows_
+- If you are searching for an IDE action, try _Navigate > Search Everywhere > Actions_ 
+
+## 🚀 Level Up
+
+Finished early? Put your IDE skills to the test with these "Pro" moves.
+
+- Try to amend your last commit
+- Modify two files. Commit the two files individually
+- Open the `README.md` file and try to achieve these tasks using the _Git_ actions in the context menu
+  - Activate the _Blame_ (_Annotate_) mode
+  - Show the history only for this file
+  - Put the cursor in the first line and find only the changes done to exactly this line
+- You've messed up something but have no commit? Check out the _Local History Tool_.
+    ⚠️ Warning: This is not a Git feature.
+
