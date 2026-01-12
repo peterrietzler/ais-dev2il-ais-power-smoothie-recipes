@@ -226,6 +226,138 @@ The goal is never to punish the person who made the mistake, but to fix the proc
 that allowed the mistake to happen. `git blame` is simply a map to find the person 
 who can help explain what happened here.
 
+## Branching and Merging (The Multiverse)
+
+Up until now, we have been working on a single timeline called `main`.
+In a team, multiple people work on different features at the same time. If everyone commits to
+the same timeline, chaos ensues!
+
+To solve this, we use **branches**. Think of them as parallel universes where you can experiment
+safely without breaking the main recipe.
+
+### Daily Workflow - Step 1: Start a Task (Create a Branch)
+
+You pick a ticket to work on. You want to add a new ingredient: **Blueberries**.
+Instead of adding it directly to the main recipe, you create a dedicated branch.
+
+```bash
+git branch feature/blueberries
+git checkout feature/blueberries
+```
+
+Or simpler (create and switch in one go):
+
+```bash
+git checkout -b feature/blueberries
+```
+
+### Daily Workflow - Step 2: Work and Commit
+
+Now you are in the `feature/blueberries` universe. Check `git status` to see that you are actually on the branch!
+
+1. Edit `README.md` and add `3. Handful of Blueberries`.
+2. Save the file.
+3. Commit your changes to this branch.
+
+```bash
+git add README.md
+git commit -m "Add antioxidants (blueberries)"
+```
+
+### Daily Workflow - Step 3: Bring it Back (Merge)
+
+Your task is done and the blueberries look delicious. It's time to bring your changes back to the main timeline
+so everyone can enjoy them.
+
+1. Switch back to the main timeline (trunk).
+```bash
+git checkout main
+```
+
+2. Merge your feature branch into the main timeline.
+```bash
+git merge feature/blueberries
+```
+
+3. Delete the branch. The feature is now part of the product. You don't need the working branch anymore.
+```bash
+git branch -d feature/blueberries
+```
+
+### 🚀 Level Up
+
+Finished early? Ready for the real world? Things don't always go this smoothly.
+
+**Challenge 1: The "Clash of Ingredients" (Merge Conflicts)**
+
+What happens if two people change the **same line** at the same time?
+
+1. Create a new branch `feature/milk` and switch to it.
+2. Change the line `2x Bananas` to `3x Bananas` in `README.md`.
+3. Commit the change.
+4. Switch back to `main` (don't merge yet!).
+5. Change the line `2x Bananas` to `1x Banana` in `README.md` (directly on master).
+6. Commit the change on `main`.
+7. Now try to merge the branch: `git merge feature/milk`.
+
+💥 **BOOM! Conflict!**
+
+Git will tell you that there is a conflict. Open `README.md` in your text editor. You will see something like this:
+
+```text
+<<<<<<< HEAD
+1x Banana
+=======
+3x Bananas
+>>>>>>> feature/milk
+```
+
+- Decide which version is correct (or combine them).
+- Remove the markers `<<<<<<<`, `=======`, `>>>>>>>`.
+- Save the file.
+- `git add README.md`
+- `git commit` (no message needed, Git creates a default one)
+
+💡After resolving the conflict and saving, type `:wq` in vi on Mac/Linux to exit and save. 
+On Windows, use `Ctrl+X` then `Y` in Notepad or follow your editor's save/close instructions.
+
+**Challenge 2: "Hold my beer" (Stashing)**
+
+You are working on a new branch `feature/spinach` and have made some experimental changes (you modified the file but didn't commit yet).
+Suddenly, your boss shouts: "STOP! We need to fix a bug on master immediately!"
+
+You can't switch branches because you have uncommitted changes that would be overwritten. You don't want to commit half-finished work.
+
+Solution: **The Stash** (a temporary clipboard for your files).
+
+1. Make a change to `README.md` but **do not** commit it.
+2. Run `git stash` to save your work on the side.
+   - Your workspace is clean again (check with `git status`).
+3. You can now switch branches, do other work, etc.
+4. When you are ready to continue, run `git stash pop`.
+  Your changes are back!
+
+💡Git can stash multiple changes. Run `git stash --help` to get more information. 
+
+**Challenge 3: "Ghost Writer" (Patches)**
+
+Sometimes you want to send a change to a friend without committing it to the repository (e.g. via email or chat).
+
+1. Make a change to `README.md` (e.g. Add "Secret Sauce"). **Do not** commit it.
+2. Create the patch file:
+   ```bash
+   git diff > secret.patch
+   ```
+3. Check the content of the file:
+   - Mac/Linux: `cat secret.patch`
+   - Windows: `type secret.patch`
+4. Undo your changes in the workspace so we can simulate receiving the patch
+5. Apply the patch:
+   ```bash
+   git apply secret.patch
+   ```
+6. Check `git status` and `cat README.md`. Your changes are back!
+
 ## Making Your Life Easier in Day-to-Day _Gitting_
 
 Git is "CLI-first". You can do everything using the CLI, which makes it the perfect candidate for 
@@ -273,6 +405,8 @@ You already know everything you need! Follow your intuition to complete the foll
 - Compare two commits
 - Revert a commit
 - Reset your project to a previous state
+- Create a feature branch, work on it and merge it back into the trunk
+- Create a merge conflict and resolve it
 
 💡Hints
 - If you can't find a tool use _View > Tool Windows_
@@ -288,5 +422,14 @@ Finished early? Put your IDE skills to the test with these "Pro" moves.
   - Activate the _Blame_ (_Annotate_) mode
   - Show the history only for this file
   - Put the cursor in the first line and find only the changes done to exactly this line
-- You've messed up something but have no commit? Check out the _Local History Tool_.
-    ⚠️ Warning: This is not a Git feature.
+- You've messed up something but have no commit? Check out the _Local History Tool_. 
+  ⚠️ Warning: This is not a Git feature
+- PyCharm can also "stash" changes for you. Check out _Shelve Changes_ in the _Commit Tool_.
+  ⚠️ Warning: This is not a Git feature
+- Try to create a patch file from the _Commit Tool_ and the history in the _Git_ tool
+- Compare the contents of branches: 
+  - Find out which commits exist on a branch but not on the trunk
+  - Find out which files and lines are different between the latest version of a branch and the trunk
+  
+ 
+
