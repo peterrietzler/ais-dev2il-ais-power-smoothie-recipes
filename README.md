@@ -431,5 +431,8 @@ Finished early? Put your IDE skills to the test with these "Pro" moves.
   - Find out which commits exist on a branch but not on the trunk
   - Find out which files and lines are different between the latest version of a branch and the trunk
   
- 
+## Further Readings
+
+- https://training.github.com/downloads/github-git-cheat-sheet/
+- https://skills.github.com/
 
