@@ -358,6 +358,120 @@ Sometimes you want to send a change to a friend without committing it to the rep
    ```
 6. Check `git status` and `cat README.md`. Your changes are back!
 
+## Working Remotely as a Team (GitHub)
+
+Up to now, we have been working locally. Now let's start to collaborate!
+In this section, you will work in pairs. One of you is **Person A**, the other is **Person B**.
+
+### Step 1: Setup the Team Repository
+
+1. **Person A**: Create a new repository on GitHub called `survival-smoothie-team`.
+   - **Important**: Do not initialize it with README, .gitignore or License. We want an empty repository because we will push our existing local repository to it.
+2. **Person A**: Invite **Person B** as a collaborator (_Settings > Collaborators_).
+3. **Person A**: Link your local repository to GitHub.
+   ```bash
+   git remote add origin https://github.com/<YOUR-USERNAME>/survival-smoothie-team.git
+   git push -u origin main
+   ```
+   ❓ **What is `origin`?**
+   It is the standard nickname for your remote repository (the server). Instead of typing the full URL every time, you just refer to it as `origin`.
+
+   ❓ **Why `-u origin main`?**
+   - `main`: Since the remote repository is completely empty, Git doesn't know which branch you want to push. You have to explicitly say "take my local main branch and put it there".
+   - `-u` (upstream): This tells Git to remember this connection. For all future pushes, you can simply type `git push`, and Git will know you mean "push main to origin".
+4. **Person A/B**: Browse the _Code_ of your repository on GitHub.
+5. **Person B**: Clone the repository to your machine.
+   **Note**: You need to clone it into a **new** folder, separate from your previous local practice folder.
+   ```bash
+   git clone https://github.com/<PERSON-A-USERNAME>/survival-smoothie-team.git survival-smoothie-team
+   cd survival-smoothie-team
+   ```
+
+### Step 2: The Synchronization Dance (Push & Pull)
+
+Git is a distributed system. You have your version, your partner has theirs, and GitHub has the "truth" in the cloud.
+
+To share your work:
+- `git push`: Send your commits up to the cloud.
+- `git pull`: Download new commits from the cloud.
+
+**Workflow:**
+
+1. **Person A**: Add a new file `shopping-list.txt` with some content and commit it.
+2. **Person A**: Run `git push` to upload the changes.
+3. **Person B**: Run `git pull` to get the file. Check your folder to see `shopping-list.txt`.
+
+### Step 3: Peer Reviews (Pull Requests)
+
+Professional teams rarely push directly to `main`. They use **Pull Requests (PRs)** to discuss changes before merging.
+This process allows for code review, ensuring quality and sharing knowledge.
+
+**The Task: Add Honey**
+
+1. **Person B**: Create a new branch `feature/honey`.
+2. **Person B**: Add "1 tbsp Honey" to the recipe in `README.md`. Commit the change.
+3. **Person B**: Push the branch to GitHub.
+   ```bash
+   git push -u origin feature/honey
+   ```
+4. **Person B**: Go to the GitHub repository page in your browser. You should see a prompt to create a **Pull Request**. Create it.
+
+   ❓**What makes a great PR?**
+   > *"A great PR tells a story."* — The DevOps Handbook
+   - **Context**: Explain **why** you made the change (the story), not just **what** you did.
+   - **Size**: Keep it small. Easy to review = Fast to merge.
+   - **Validation**: Includes tests or screenshots to prove it works.
+
+5. **Person A**: Go to GitHub, click on the **Pull Requests** tab. Open the PR created by Person B.
+   - Review the changes (_Files changed_ tab).
+   - Leave a comment.
+   - Click **Review changes** and select **Approve**.
+
+   ❓**What makes a good review?**
+   > *"A good review is a peer-to-peer conversation to improve quality."* — The DevOps Handbook
+   - **Focus on Logic**: Don't nitpick formatting/style (use tools for that).
+   - **Be Kind**: Critique the code, not the person.
+   - **Ask Questions**: "Why did you choose X?" instead of "Change X to Y".
+   - **Praise**: Highlight good ideas! Comments like "Yummy!" boost motivation. 
+
+6. **Person A**: Click **Merge pull request**.
+7. **Both**: Switch back to `main` locally and `git pull` to synchronize the merged changes.
+   ```bash
+   git checkout main
+   git pull
+   ```
+
+### 🚀 Level Up
+
+Finished early? Try these advanced GitHub moves.
+
+**Challenge 1: "None Shall Pass" (Branch Protection)**
+
+Real teams protect their `main` branch so nobody can accidentally break production.
+1. Go to your repository **Settings** > **Branches**.
+2. Add a rule for `main`.
+3. Check **Require a pull request before merging**.
+   - **Important**: Check **"Do not allow bypassing the above settings"** (or **"Include administrators"**) so the rule applies to you (the owner) too!
+4. Try to push directly to `main` from your terminal. It should fail!
+
+**Challenge 2: "The Magic Link" (Issues & PRs)**
+
+1. Create a GitHub Issue "Add more vitamins". Note the issue number (e.g. #1).
+2. Create a branch, add a vitamin to the recipe.
+3. When opening the PR, write "Closes #1" in the description.
+4. Merge the PR and watch what happens to the Issue automatically.
+
+**Challenge 3: "Conflict in the Cloud"**
+
+Create a conflict that happens on GitHub, not locally.
+
+1. Both Person A and Person B create a new branch from `main`.
+2. Both modify the **same line** in the README and commit the change.
+3. Both push their branch and open a PR.
+4. Person A merges their PR first.
+5. Person B will now see a conflict in their PR.
+6. Resolve the conflict directly in the GitHub UI and merge.
+
 ## Making Your Life Easier in Day-to-Day _Gitting_
 
 Git is "CLI-first". You can do everything using the CLI, which makes it the perfect candidate for 
