@@ -173,12 +173,12 @@ git reset --hard <hash-of-v1>
 | Command                | What it does                             | Metaphor                                        |
 |:-----------------------|:-----------------------------------------|:------------------------------------------------|
 | `git init`             | Creates a new repository                 | Build the vault                                 |
-| `git status`           | Shows changed workspace and staged files | Check what's already in the box to be shipped   |
+| `git status`           | Shows changed workspace and staged files | Check what's already in the box to be shipped. Also shows what you probably want to put into the box   |
 | `git add`              | Stages a file                            | Put something into the box to be shipped        |
-| `git commit`           | Creates a commit                         | Put the box into the vault                      |
+| `git commit`           | Creates a commit                         | Seal the box and put it into the vault          |
 | `git log`              | Shows commits                            | Show all the boxes in the vault                 | 
 | `git diff HASH1 HASH2` | Compares two commits                     | Show the difference of two boxes in the vault   |
-| `git revert`           | Undoes changes                           | Duplicate a box and put it into the vault       |
+| `git revert`           | Undoes changes                           | Undo the changes that are in a box and put the changed one into the vault |
 | `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away |
 
 
