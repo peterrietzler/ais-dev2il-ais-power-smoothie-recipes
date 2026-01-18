@@ -12,12 +12,15 @@ You will learn how to use Git as a system to track your progress and navigate hi
    - **Mac:** TextEdit. Make sure that you are using plain text format (_Format > Make Plain Text_)
    - **For the Brave:** `vi` or `vim`. Use this option only if you are comfortable with vi!
 
+Hint: The commands are short and easy to type. You can also make use of the terminal's completion function. If you type instead of copy pasting 
+everything, you will more time to grasp what it is about and thus have a better learning experience. 
+
 
 ### Step 1: Tell Git Who You Are (Global Config)
 Before we start, Git needs to know who is creating the commits. 
-In Git, there are **system** settings (everyone on the PC), 
-**global** settings (only for you), 
-and **local** settings (just this repository). We will use the global settings.
+In Git, there are **system** settings (which are for every user and every repository on the entire computer), 
+**global** settings (which are for your user only), 
+and **local** settings (which are for this repository only). We will use the global settings.
 
 ```bash
 git config --global user.name "Your Name"
