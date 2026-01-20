@@ -90,7 +90,7 @@ A pointer that says _"You are here"_. It points to the specific commit you are c
 
 Add `2. 1x Scoop Protein Powder` to your `README.md`.
 
-Now, let's see **WHAT** changed before we commit it:
+Now, let's see **WHAT** changed in the workspace before we stage it:
 
 ```bash
 git diff
@@ -104,6 +104,8 @@ Stage and commit again:
 git add README.md
 git commit -m "Add protein for brain power"
 ```
+
+💡`git diff` shows the changes in your workspace that are not yet staged! If you want to see all the changes since the last commit, including staged changes, use `git diff HEAD`.
 
 **Our Timeline Now**
 
@@ -172,6 +174,11 @@ git reset --hard <hash-of-v1>
 ```
 
 ⚠️ Warning: Newer commits are now gone! Be very careful with this command!
+
+💡If you want to throw away all your changes that you currently have in the workspace, but not 
+delete any commits, use `git reset --hard HEAD` (remember `HEAD` is just a pointer to the latest commit). 
+
+
 
 ### 🏆 Summary Cheat Sheet
 
