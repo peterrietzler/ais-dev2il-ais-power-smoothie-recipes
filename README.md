@@ -6,15 +6,18 @@ You will learn how to use Git as a system to track your progress and navigate hi
 ## Git Basics
 
 ### 🛠 Tools You'll Need
-- **Terminal:** Command Prompt/PowerShell (Windows) or Terminal (Mac).
+- **Terminal:** Terminal (Mac), GitBash (Windows).
 - **Text Editor:**
-   - **Windows:** Notepad. Make sure that you are using plain text format
    - **Mac:** TextEdit. Make sure that you are using plain text format (_Format > Make Plain Text_)
-   - **For the Brave:** `vi` or `vim`. Use this option only if you are comfortable with vi!
+   - **Windows:** Notepad. Make sure that you are using plain text format
+   - **For the Brave:** `vi` or `vim`. Use this option if you are comfortable with vi!
 
-Hint: The commands are short and easy to type. You can also make use of the terminal's completion function. If you type instead of copy pasting 
-everything, you will more time to grasp what it is about and thus have a better learning experience. 
+At some points, the terminal will ask for accepting input or let you scroll through the output.
+- To scroll, use the up and down arrow keys. To stop scrolling, type `q` for quit.
+- To accept input, type `:wq` (`:` = go to command mode, `w` = write, `q` = quit)
 
+Maximising your learning effect: The commands are short and easy to type. You can also make use of the terminal's completion function. If you type instead of copy & pasting 
+everything, your brain will grasp it deeper and you thus have a better learning experience. 
 
 ### Step 1: Tell Git Who You Are (Global Config)
 Before we start, Git needs to know who is creating the commits. 
@@ -38,10 +41,7 @@ git init
 
 **👻 Where is my repository (the "Vault")?**
 
-Git creates a hidden folder called `.git` to store your commits. To see the "invisible" magic, try this:
-
-- Mac / Linux: `ls -la`
-- Windows (PowerShell): `ls -Force`
+Git creates a hidden folder called `.git` to store your commits. To see the "invisible" magic, try this: `ls -la`
 
 ⚠️ Note: **Never** delete or fiddle around with the `.git` folder manually. If you delete it, your entire project history (your time machine) is gone!
 
@@ -333,8 +333,8 @@ Git will tell you that there is a conflict. Open `README.md` in your text editor
 - `git add README.md`
 - `git commit` (no message needed, Git creates a default one)
 
-💡After resolving the conflict and saving, type `:wq` in vi on Mac/Linux to exit and save. 
-On Windows, use `Ctrl+X` then `Y` in Notepad or follow your editor's save/close instructions.
+💡After resolving the conflict and saving, type `:wq` in vi to exit and save. 
+If using another editor, follow its save/close instructions.
 
 **Challenge 2: "Hold my beer" (Stashing)**
 
@@ -363,9 +363,7 @@ Sometimes you want to send a change to a friend without committing it to the rep
    ```bash
    git diff > secret.patch
    ```
-3. Check the content of the file:
-   - Mac/Linux: `cat secret.patch`
-   - Windows: `type secret.patch`
+3. Check the content of the file: `cat secret.patch`
 4. Undo your changes in the workspace so we can simulate receiving the patch (remember the `git reset` command ?)
 5. Apply the patch:
    ```bash
@@ -564,4 +562,3 @@ Finished early? Put your IDE skills to the test with these "Pro" moves.
 
 - https://training.github.com/downloads/github-git-cheat-sheet/
 - https://skills.github.com/
-
