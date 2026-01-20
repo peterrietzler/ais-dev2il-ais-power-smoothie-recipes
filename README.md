@@ -154,6 +154,8 @@ You want to remove the protein, but you want to keep the history of that mistake
 git revert HEAD --no-edit
 ```
 
+💡If you use the `--no-edit` flag, then Git will not open your default editor to ask you for a commit message, but creates a default one instead.
+
 **Our Timeline Now**
 
 Use what you've already learned to inspect the timeline starting from here!
