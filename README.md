@@ -47,7 +47,7 @@ Git creates a hidden folder called `.git` to store your commits. To see the "inv
 
 ### Step 3: Create the Recipe
 
-1. Create a file named `README.md` and add your first ingredient: `1. 2x Bananas`.
+1. Create a file named `README.md` and add your first ingredient: `2x Bananas`.
 1. Go back to your terminal and check the status: `git status`.
 
 🔍 Git sees the file but calls it **untracked**. It’s in the room, but not "on the stage" yet.
@@ -88,7 +88,7 @@ A pointer that says _"You are here"_. It points to the specific commit you are c
 
 ### Step 5: Expand the Recipe
 
-Add `2. 1x Scoop Protein Powder` to your `README.md`.
+Add `1x Scoop Protein Powder` to your `README.md`.
 
 Now, let's see **WHAT** changed in the workspace before we stage it:
 
@@ -182,16 +182,16 @@ delete any commits, use `git reset --hard HEAD` (remember `HEAD` is just a point
 
 ### 🏆 Summary Cheat Sheet
 
-| Command                | What it does                             | Metaphor                                        |
-|:-----------------------|:-----------------------------------------|:------------------------------------------------|
-| `git init`             | Creates a new repository                 | Build the vault                                 |
-| `git status`           | Shows changed workspace and staged files | Check what's already in the box to be shipped. Also shows what you probably want to put into the box   |
-| `git add`              | Stages a file                            | Put something into the box to be shipped        |
-| `git commit`           | Creates a commit                         | Seal the box and put it into the vault          |
-| `git log`              | Shows commits                            | Show all the boxes in the vault                 | 
-| `git diff HASH1 HASH2` | Compares two commits                     | Show the difference of two boxes in the vault   |
-| `git revert`           | Undoes changes                           | Undo the changes that are in a box and put the changed one into the vault |
-| `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away |
+| Command                | What it does                             | Metaphor                                                                                             |
+|:-----------------------|:-----------------------------------------|:-----------------------------------------------------------------------------------------------------|
+| `git init`             | Creates a new repository                 | Build the vault                                                                                      |
+| `git status`           | Shows changed workspace and staged files | Check what's already in the box to be shipped. Also shows what you probably want to put into the box |
+| `git add`              | Stages a file                            | Put something into the box to be shipped                                                             |
+| `git commit`           | Creates a commit                         | Seal the box and put it into the vault                                                               |
+| `git log`              | Shows commits                            | Show all the boxes in the vault                                                                      | 
+| `git diff HASH1 HASH2` | Compares two commits                     | Show the difference of two boxes in the vault                                                        |
+| `git revert`           | Undoes changes                           | Undo the changes that are in a box and put the changed one into the vault                            |
+| `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away                                        |
 
 
 ### 🚀 Level Up
@@ -267,7 +267,7 @@ git checkout -b feature/blueberries
 
 Now you are in the `feature/blueberries` universe. Check `git status` to see that you are actually on the branch!
 
-1. Edit `README.md` and add `3. Handful of Blueberries`.
+1. Edit `README.md` and add `A Handful of Blueberries`.
 2. Save the file.
 3. Commit your changes to this branch.
 
@@ -283,8 +283,11 @@ so everyone can enjoy them.
 
 1. Switch back to the main timeline (trunk).
 ```bash
-git checkout main
+git checkout master
 ```
+
+💡Git does not mandate how your main timeline is called. In fact, it's simply yet another branch. By default, Git calls this branch `master`, but 
+many teams use `main` instead (this is e.g. the convention and default in GitHub). 
 
 2. Merge your feature branch into the main timeline.
 ```bash
@@ -304,13 +307,13 @@ Finished early? Ready for the real world? Things don't always go this smoothly.
 
 What happens if two people change the **same line** at the same time?
 
-1. Create a new branch `feature/milk` and switch to it.
+1. Create a new branch `feature/bananas` and switch to it.
 2. Change the line `2x Bananas` to `3x Bananas` in `README.md`.
 3. Commit the change.
-4. Switch back to `main` (don't merge yet!).
-5. Change the line `2x Bananas` to `1x Banana` in `README.md` (directly on master).
-6. Commit the change on `main`.
-7. Now try to merge the branch: `git merge feature/milk`.
+4. Switch back to `master` (don't merge yet!).
+5. Change the line `2x Bananas` to `1x Banana` in `README.md` (directly on `master`).
+6. Commit the change.
+7. Now try to merge the branch: `git merge feature/bananas`.
 
 💥 **BOOM! Conflict!**
 
@@ -363,7 +366,7 @@ Sometimes you want to send a change to a friend without committing it to the rep
 3. Check the content of the file:
    - Mac/Linux: `cat secret.patch`
    - Windows: `type secret.patch`
-4. Undo your changes in the workspace so we can simulate receiving the patch
+4. Undo your changes in the workspace so we can simulate receiving the patch (remember the `git reset` command ?)
 5. Apply the patch:
    ```bash
    git apply secret.patch
