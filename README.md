@@ -460,7 +460,8 @@ Finished early? Try these advanced GitHub moves.
 
 **Challenge 1: "None Shall Pass" (Branch Protection)**
 
-Real teams protect their `main` branch so nobody can accidentally break production.
+When Chuck Norris protects his `master` branch, even though bugs are too scared to push.
+
 1. Go to your repository **Settings** > **Branches**.
 2. Add a rule for `main`.
 3. Check **Require a pull request before merging**.
@@ -478,7 +479,7 @@ Teams use issues to track bugs, feature requests, and tasks in a shared, organiz
 
 **Challenge 3: "Conflict in the Cloud"**
 
-Create a conflict that happens on GitHub, not locally.
+When Chuck Norris merges a pull request, even merge conflicts resolve themselves out of fear.
 
 1. Both Person A and Person B create a new branch from `main`.
 2. Both modify the **same line** in the README and commit the change.
