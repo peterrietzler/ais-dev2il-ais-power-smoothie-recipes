@@ -469,6 +469,8 @@ Real teams protect their `main` branch so nobody can accidentally break producti
 
 **Challenge 2: "The Magic Link" (Issues & PRs)**
 
+Teams use issues to track bugs, feature requests, and tasks in a shared, organized way. This helps everyone stay aligned, ensures nothing is forgotten, and makes collaboration transparent and efficient.
+
 1. Create a GitHub Issue "Add more vitamins". Note the issue number (e.g. #1).
 2. Create a branch, add a vitamin to the recipe.
 3. When opening the PR, write "Closes #1" in the description.
