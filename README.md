@@ -474,7 +474,7 @@ Teams use issues to track bugs, feature requests, and tasks in a shared, organiz
 1. Create a GitHub Issue "Add more vitamins". Note the issue number (e.g. #1).
 2. Create a branch, add a vitamin to the recipe.
 3. When opening the PR, write "Closes #1" in the description.
-4. Merge the PR and watch what happens to the Issue automatically.
+4. Merge the PR and watch what happens to the issue automatically.
 
 **Challenge 3: "Conflict in the Cloud"**
 
