@@ -460,7 +460,7 @@ Finished early? Try these advanced GitHub moves.
 
 **Challenge 1: "None Shall Pass" (Branch Protection)**
 
-When Chuck Norris protects his `master` branch, even though bugs are too scared to push.
+Chuck Norris protects his `master` branch, even though bugs are too scared to push.
 
 1. Go to your repository **Settings** > **Branches**.
 2. Add a rule for `main`.
