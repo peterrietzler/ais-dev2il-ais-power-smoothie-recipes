@@ -166,7 +166,7 @@ Use what you've already learned to inspect the timeline starting from here!
 
 Your recipe is a mess. You want to **delete** everything and go back to an older version as if nothing else happened.
 
-1. Find the real hash of your first commit
+1. Find the hash of your first commit
 1. Reset the timeline
 
 ```bash
