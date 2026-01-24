@@ -30,6 +30,11 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
+Also run this command. Just do it for now. We will understand it later on.
+```bash
+git config --global init.defaultBranch main
+```
+
 ### Step 2: Create the Recipe Book
 Create a new folder for your project and tell Git to start watching it.
 
@@ -178,7 +183,8 @@ git reset --hard <hash-of-v1>
 💡If you want to throw away all your changes that you currently have in the workspace, but not 
 delete any commits, use `git reset --hard HEAD` (remember `HEAD` is just a pointer to the latest commit). 
 
-
+💡If you want to go back to a commit, but don't want to lose the changes, use `git reset --soft <hash-of-v1>`.
+This will delete the commits but at the same time keep the undone changes in your workspace.
 
 ### 🏆 Summary Cheat Sheet
 
@@ -191,7 +197,8 @@ delete any commits, use `git reset --hard HEAD` (remember `HEAD` is just a point
 | `git log`              | Shows commits                            | Show all the boxes in the vault                                                                      | 
 | `git diff HASH1 HASH2` | Compares two commits                     | Show the difference of two boxes in the vault                                                        |
 | `git revert`           | Undoes changes                           | Undo the changes that are in a box and put the changed one into the vault                            |
-| `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away                                        |
+| `git reset --hard`     | Destroys changes                         | Remove boxes from the vault and throw them away                                                      |              
+| `git reset --soft`     | Destroys changes                         | Remove boxes from the vault, but keep the contents of the box in your workspace                      |              
 
 
 ### 🚀 Level Up
@@ -247,6 +254,8 @@ the same timeline, chaos ensues!
 To solve this, we use **branches**. Think of them as parallel universes where you can experiment
 safely without breaking the main recipe.
 
+💡Run `git status` to see which branch you are currently on.
+
 ### Daily Workflow - Step 1: Start a Task (Create a Branch)
 
 You pick a ticket to work on. You want to add a new ingredient: **Blueberries**.
@@ -281,15 +290,16 @@ git commit -m "Add antioxidants (blueberries)"
 Your task is done and the blueberries look delicious. It's time to bring your changes back to the main timeline
 so everyone can enjoy them.
 
-1. Switch back to the main timeline (trunk).
+1. Switch back to the main timeline
 ```bash
-git checkout master
+git checkout main
 ```
 
 💡Git does not mandate how your main timeline is called. In fact, it's simply yet another branch. By default, Git calls this branch `master`, but 
-many teams use `main` instead (this is e.g. the convention and default in GitHub). 
+many teams use `main` instead (this is e.g. the convention and default in GitHub). It's now time to remember the command 
+`git config --global init.defaultBranch main` you used at the beginning of this session. Figure out on your own what it did.
 
-2. Merge your feature branch into the main timeline.
+2. Merge your feature branch into the main timeline
 ```bash
 git merge feature/blueberries
 ```
@@ -310,8 +320,8 @@ What happens if two people change the **same line** at the same time?
 1. Create a new branch `feature/bananas` and switch to it.
 2. Change the line `2x Bananas` to `3x Bananas` in `README.md`.
 3. Commit the change.
-4. Switch back to `master` (don't merge yet!).
-5. Change the line `2x Bananas` to `1x Banana` in `README.md` (directly on `master`).
+4. Switch back to `main` (don't merge yet!).
+5. Change the line `2x Bananas` to `1x Banana` in `README.md` (directly on `main`).
 6. Commit the change.
 7. Now try to merge the branch: `git merge feature/bananas`.
 
@@ -339,7 +349,7 @@ If using another editor, follow its save/close instructions.
 **Challenge 2: "Hold my beer" (Stashing)**
 
 You are working on a new branch `feature/spinach` and have made some experimental changes (you modified the file but didn't commit yet).
-Suddenly, your boss shouts: "STOP! We need to fix a bug on master immediately!"
+Suddenly, your boss shouts: "STOP! We need to fix a bug on our trunk immediately!"
 
 You can't switch branches because you have uncommitted changes that would be overwritten. You don't want to commit half-finished work.
 
@@ -433,7 +443,7 @@ This process allows for code review, ensuring quality and sharing knowledge.
    > *"A great PR tells a story."* — The DevOps Handbook
    - **Context**: Explain **why** you made the change (the story), not just **what** you did.
    - **Size**: Keep it small. Easy to review = Fast to merge.
-   - **Validation**: Includes tests or screenshots to prove it works.
+   - **Validation**: Prove it works! Add e.g. test results (a lot more on this later in our sessions)
 
 5. **Person A**: Go to GitHub, click on the **Pull Requests** tab. Open the PR created by Person B.
    - Review the changes (_Files changed_ tab).
@@ -447,7 +457,7 @@ This process allows for code review, ensuring quality and sharing knowledge.
    - **Ask Questions**: "Why did you choose X?" instead of "Change X to Y".
    - **Praise**: Highlight good ideas! Comments like "Yummy!" boost motivation. 
 
-6. **Person A**: Click **Merge pull request**.
+6. **Person A**: Click **Merge pull request** and delete the branch.
 7. **Both**: Switch back to `main` locally and `git pull` to synchronize the merged changes.
    ```bash
    git checkout main
@@ -460,13 +470,37 @@ Finished early? Try these advanced GitHub moves.
 
 **Challenge 1: "None Shall Pass" (Branch Protection)**
 
-Chuck Norris protects his `master` branch, even though bugs are too scared to push.
+Chuck Norris protects his `main` branch, even though bugs are too scared to push.
 
-1. Go to your repository **Settings** > **Branches**.
-2. Add a rule for `main`.
+1. Go to your repository **Settings > Branches**
+2. Use **Add classic branch protection rule** to create a rule for the `main` branch.
 3. Check **Require a pull request before merging**.
-   - **Important**: Check **"Do not allow bypassing the above settings"** (or **"Include administrators"**) so the rule applies to you (the owner) too!
+   - **Important**: Check **Do not allow bypassing the above settings** so the rule applies to you (the owner) too!
+   - **Important**: GitHub sets the option **Require approvals** to 1 by default. Uncheck it to keep things simple for now.
 4. Try to push directly to `main` from your terminal. It should fail!
+
+**Oops! Stuck on main?**
+
+You now have a commit on your local `main` branch that you cannot push. 
+Let's fix this by moving your changes to a new branch:
+
+1. Undo the last commit but keep the changes staged (Soft Reset) 
+```bash
+git reset --soft HEAD~1
+```
+💡`HEAD~n` references the n-th commit before HEAD. Here, we go back 1 commit. You can also add a commit hash instead.
+
+2. Switch to a new branch (takes the staged changes with you)
+```bash
+git checkout -b rescue-mission
+```
+
+3. Stage, commit on and push the new branch 🥳 
+```bash
+git add .
+git commit -m "..."
+git push -u origin rescue-mission
+```
 
 **Challenge 2: "The Magic Link" (Issues & PRs)**
 
