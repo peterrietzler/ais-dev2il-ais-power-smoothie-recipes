@@ -6,10 +6,10 @@ You will learn how to use Git as a system to track your progress and navigate hi
 ## Git Basics
 
 ### 🛠 Tools You'll Need
-- **Terminal:** Terminal (Mac), GitBash (Windows).
+- **Terminal:** Terminal (Mac), WSL (Windows).
 - **Text Editor:**
    - **Mac:** TextEdit. Make sure that you are using plain text format (_Format > Make Plain Text_)
-   - **Windows:** Notepad. Make sure that you are using plain text format
+   - **Windows:** If you are using Notepad: Make sure that you are using plain text format
    - **For the Brave:** `vi` or `vim`. Use this option if you are comfortable with vi!
 
 At some points, the terminal will ask for accepting input or let you scroll through the output.
