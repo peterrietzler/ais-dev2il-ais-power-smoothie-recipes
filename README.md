@@ -396,6 +396,23 @@ In this section, you will work in pairs. One of you is **Person A**, the other i
    git remote add origin https://github.com/<YOUR-USERNAME>/survival-smoothie-team.git
    git push -u origin main
    ```
+
+   #### ⚠️ Authentication Note (GitHub HTTPS)
+
+   GitHub **does not accept account passwords** for Git operations over HTTPS anymore.
+   If Git prompts you for a username/password during `git push`, `git pull`, or `git clone`, use:
+   - **Username**: your GitHub username
+   - **Password**: a **Personal Access Token (classic)**
+
+   **How to create a Personal Access Token (classic):**
+   1. On GitHub (website): **Settings** (your profile menu) → **Developer settings**
+   2. **Personal access tokens** → **Tokens (classic)**
+   3. Click **Generate new token** → **Generate new token (classic)**
+   4. Set a **Note** (e.g. `survival-smoothie-team`) and an **Expiration** (end of this semester)
+   5. Click **Generate token** and **copy** it (you will not see it again)
+
+   Treat the token like a password: don’t share it, don’t paste it into chat, and store it in a password manager.
+
    ❓ **What is `origin`?**
    It is the standard nickname for your remote repository (the server). Instead of typing the full URL every time, you just refer to it as `origin`.
 
